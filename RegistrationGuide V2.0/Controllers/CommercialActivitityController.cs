@@ -37,7 +37,7 @@ namespace NLayer.API.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [Authorize(Roles = "admin,manager")]
-        public IActionResult Add(CommercialActivity commercialActivity)
+        public IActionResult Create(CommercialActivity commercialActivity)
         {
             _commercialActivityService.Add(commercialActivity);
             return Ok();
