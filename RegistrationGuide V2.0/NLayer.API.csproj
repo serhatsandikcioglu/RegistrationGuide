@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>RegistrationGuide_V2._0</RootNamespace>
+    <UserSecretsId>eda0d9b5-2309-4d11-817c-e8056cebbec1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -13,15 +13,15 @@ namespace NLayer.Service
     public class CustomerService : ICustomerService
     {
         private IUnitOfWork _unitOfWork;
-        private readonly IGenericRepository<Customer> _customerRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public CustomerService(IUnitOfWork unitOfWork, IGenericRepository<Customer> genericRepository)
+        public CustomerService(IUnitOfWork unitOfWork, ICustomerRepository customerRepository)
         {
             _unitOfWork = unitOfWork;
-            _customerRepository = genericRepository;
+            _customerRepository = customerRepository;
         }
 
-        public void Create(Customer customer)
+        public void Add(Customer customer)
         {
             _customerRepository.Add(customer);
             _unitOfWork.Commit();
@@ -48,23 +48,23 @@ namespace NLayer.Service
             _customerRepository.Update(customer);
             _unitOfWork.Commit();
         }
-
-        public string GetNamesFromNumber(string number)
+        public  string GetNamesFromNumber(string number)
         {
             string Succes = "This number does not have more than one name";
             string failed = "This number has more than one name";
             string null1 = "This number Does not exist";
-            var ad = _customerRepository.GetAll().Where(x => x.PhoneNumber == number).Select(x => x.Name).ToList();
-            if (ad.Count == 1)
+            var names = _customerRepository.GetNamesFromNumber(number);
+            if (names.Count == 1)
             {
                 return (Succes);
             }
-            if (ad.Count > 1)
+            if (names.Count > 1)
             {
                 return (failed);
             }
 
             return (null1);
         }
+
     }
 }

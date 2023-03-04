@@ -42,7 +42,7 @@ namespace NLayer.API.Controllers
         [Authorize(Roles = "admin,manager")]
         public IActionResult Create(Customer customer)
         {
-            _customerService.Create(customer);
+            _customerService.Add(customer);
             return Ok(customer);
         }
         [HttpDelete]

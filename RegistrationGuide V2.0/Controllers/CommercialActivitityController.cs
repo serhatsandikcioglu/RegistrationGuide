@@ -39,7 +39,7 @@ namespace NLayer.API.Controllers
         [Authorize(Roles = "admin,manager")]
         public IActionResult Create(CommercialActivity commercialActivity)
         {
-            _commercialActivityService.Update(commercialActivity);
+            _commercialActivityService.Add(commercialActivity);
             return Ok();
         }
         [HttpDelete]

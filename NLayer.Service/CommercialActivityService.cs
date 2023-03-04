@@ -19,7 +19,7 @@ namespace NLayer.Service
             _commercialActivityRepository = commercialActivityRepository;
         }
 
-        public void Create(CommercialActivity commercialactivity)
+        public void Add(CommercialActivity commercialactivity)
         {
             _commercialActivityRepository.Add(commercialactivity);
             _unitOfWork.Commit();
