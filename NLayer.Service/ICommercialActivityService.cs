@@ -12,7 +12,7 @@ namespace NLayer.Service
         List<CommercialActivity> GetAll();
         void Delete(int commercialactivityid);
         void Update(CommercialActivity commercialactivity);
-        void Create(CommercialActivity commercialactivity);
+        void Add(CommercialActivity commercialactivity);
         CommercialActivity GetById(int commercialactivityid);
     }
 }

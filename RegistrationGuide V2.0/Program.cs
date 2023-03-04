@@ -25,7 +25,9 @@ builder.Services.AddScoped(typeof(AppDbContext));
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<GetToken>();
 builder.Services.AddScoped<TokenOptionsModel>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.Configure<TokenOptionsModel>(builder.Configuration.GetSection("TokenOptions"));
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,7 +58,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 
-    var app = builder.Build();
+var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {

@@ -40,9 +40,9 @@ namespace NLayer.API.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [Authorize(Roles = "admin,manager")]
-        public IActionResult Create(Customer customer)
+        public IActionResult Add(Customer customer)
         {
-            _customerService.Create(customer);
+            _customerService.Add(customer);
             return Ok(customer);
         }
         [HttpDelete]
