@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Data
+namespace NLayer.Service.Interface
 {
     public interface IUnitOfWork
     {

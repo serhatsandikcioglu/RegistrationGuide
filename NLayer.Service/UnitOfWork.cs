@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLayer.Data.Models;
+using NLayer.Service.Interface;
 
 namespace NLayer.Data
 {

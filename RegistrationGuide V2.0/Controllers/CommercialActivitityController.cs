@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NLayer.Data.Models;
-using NLayer.Service;
+using NLayer.Service.Interface;
 using System.Data;
 
 namespace NLayer.API.Controllers

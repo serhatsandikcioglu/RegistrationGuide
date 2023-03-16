@@ -1,5 +1,6 @@
 ﻿using NLayer.Data;
 using NLayer.Data.Models;
+using NLayer.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

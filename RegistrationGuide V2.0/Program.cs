@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using NLayer.Service.Interface;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,9 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbC
 builder.Services.AddScoped<GetToken>();
 builder.Services.AddScoped<TokenOptionsModel>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped(sp => new ConnectionFactory() { Uri = new Uri(builder.Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync = true });
+builder.Services.AddScoped<RabbitMQClientService>();
+builder.Services.AddScoped<RabbitMQPublisher>();
 builder.Services.Configure<TokenOptionsModel>(builder.Configuration.GetSection("TokenOptions"));
 
 builder.Services.AddAuthentication(options =>
