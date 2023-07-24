@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Data.Models;
-using NLayer.Service;
+using Microsoft.AspNetCore.WebUtilities;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
+using NLayer.Service.Interface;
 
 namespace NLayer.API.Controllers
 {
@@ -21,8 +24,7 @@ namespace NLayer.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [Authorize(Roles = "admin,manager")]
+
         public IActionResult GetAll()
         {
             var customer = _customerService.GetAll();
@@ -38,10 +40,10 @@ namespace NLayer.API.Controllers
             return Ok(customer);
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [Authorize(Roles = "admin,manager")]
+      
         public IActionResult Create(Customer customer)
         {
+            
             _customerService.Add(customer);
             return Ok(customer);
         }
