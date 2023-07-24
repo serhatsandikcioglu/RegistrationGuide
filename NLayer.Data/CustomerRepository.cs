@@ -8,43 +8,17 @@ using System.Threading.Tasks;
 
 namespace NLayer.Data
 {
-    public class CustomerRepository : ICustomerRepository, IGenericRepository<Customer>
+    public class CustomerRepository : GenericRepository<Customer>,  ICustomerRepository
     {
          private readonly DbSet<Customer> _dbSet;
 
-        public CustomerRepository(AppDbContext appDbContext)
+        public CustomerRepository(AppDbContext appDbContext) : base (appDbContext)
         {
             _dbSet = appDbContext.Set<Customer>();
         }
-
-        public void Add(Customer entity)
-         {
-             _dbSet.Add(entity);
-         }
-
-         public void Delete(int id)
-         {
-             _dbSet.Remove(GetById(id));
-         }
-
-         public List<Customer> GetAll()
-         {
-             return _dbSet.ToList();
-         }
-
-         public Customer GetById(int id)
-         {
-             return _dbSet.Find(id);
-         }
-
          public List<string> GetNamesFromNumber(string number)
          {
              return _dbSet.Where(x => x.PhoneNumber == number).Select(x => x.Name).ToList();
-         }
-
-         public void Update(Customer entity)
-         {
-             _dbSet.Update(entity);
          }
     }
 
