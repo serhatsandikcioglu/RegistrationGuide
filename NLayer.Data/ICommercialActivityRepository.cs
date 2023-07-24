@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Service.Interface
+namespace NLayer.Data
 {
     public interface ICommercialActivityRepository : IGenericRepository<CommercialActivity>
     {
